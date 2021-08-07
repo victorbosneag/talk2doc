@@ -1,4 +1,5 @@
 const {auth, db} = require("./firebase");
+const functions = require("firebase-functions");
 
 const susan = {
     firstName : "Susan",
@@ -15,3 +16,4 @@ db.collection('users')
     console.log(snapshot)
 ))
 
+exports.api = functions.https.onRequest(app);
