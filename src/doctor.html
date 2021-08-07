@@ -233,7 +233,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" id="submit-doctorNotes-btn">Submit</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" id="submit-doctorNotes-btn">Submit</button>
                 </div>
               </div>
             </div>
@@ -262,23 +262,27 @@
                     <h6 class="m-0 font-weight-bold text-primary">Pending Consultations</h6>
                 </div>
                 <div class="card-body">
-                    <a class="note" data-toggle="modal" data-target="#myModal">
-                      <p>Insert Patient Name</p>
+                    <a class="note" data-toggle="modal" data-target="#myModal" id='note1'>
+                      <h4>Insert Patient Name</h4>
+                      <p>Insert details</p>
                       <div class="small text-gray-500">December 2, 2019</div>
                     </a>
                     <hr>
-                    <a class="note" data-toggle="modal" data-target="#myModal">
-                      <p>Sample doctor's note...</p>
+                    <a class="note" data-toggle="modal" data-target="#myModal" id='note2'>
+                      <h4>Insert Patient Name</h4>
+                      <p>Insert details</p>
                       <div class="small text-gray-500">December 2, 2019</div>
                     </a>
                     <hr>
-                    <a class="note" data-toggle="modal" data-target="#myModal">
-                      <p>Sample doctor's note...</p>
+                    <a class="note" data-toggle="modal" data-target="#myModal" id='note3'>
+                      <h4>Insert Patient Name</h4>
+                      <p>Insert details</p>
                       <div class="small text-gray-500">December 2, 2019</div>
                     </a>
                     <hr>
-                    <a class="note" data-toggle="modal" data-target="#myModal">
-                      <p>Sample doctor's note...</p>
+                    <a class="note" data-toggle="modal" data-target="#myModal" id='note4'>
+                      <h4>Insert Patient Name</h4>
+                      <p>Insert details</p>
                       <div class="small text-gray-500">December 2, 2019</div>
                     </a>
                     <hr>
@@ -342,8 +346,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
   <!-- Custom scripts for all pages-->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="axios.js"></script>
   <script src="theme.js"></script>
-
+  <script src="doctor.js"></script>
   <script type="text/javascript">
   </script>
 

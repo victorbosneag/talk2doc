@@ -1,16 +1,21 @@
-//const form = document.getElementById('dailyCheckInForm');
-//const symptoms = document.getElementById('symptoms');
-//const otherInfo = document.getElementById('otherInfo');
-
 $(document).ready(function() {
-    $('#submit-checkIn-btn').on('click', function(e) {
-        //console.log('submit clicked');
+    var patientName = null;
+    $('.note').click(function(e) {
+        //currentConsultation = e.currentTarget.id;
+        //console.log(e.currentTarget.id);
+        //console.log($('#' + e.currentTarget.id).children('h4').text())
+        patientName = $('#' + e.currentTarget.id).children('h4').text();
+    })
+
+    $('#submit-doctorNotes-btn').click(function(e) {
+        //console.log(document.getElementById('doctorNotes').value);
         const sendInfo = async () => {
-            const promise = await createAxios({
+            const response = await createAxios({
                 method: 'post',
-                url: '/checkin',
+                url: '/doctorNote',
                 data: {
-                    Symptoms: '',
+                    username: patientName,
+                    notes: document.getElementById('doctorNotes').value,
                 }
             });
         }
@@ -18,7 +23,7 @@ $(document).ready(function() {
     })
     
     if (localStorage.getItem('user')) {
-        const getDocNotes = async () => {
+        const getConsultations = async () => {
             const res = await createAxios({
                 method: 'get',
                 url: 'doc-notes',
@@ -44,5 +49,12 @@ $(document).ready(function() {
                 noteSection.appendChild(document.createElement('hr'));
             });
         }
+
+        const getPatients = async () => {
+
+        }
+
+        getConsultations();
+        getPatients();
     }
-})
+})  

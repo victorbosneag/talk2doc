@@ -11,7 +11,7 @@ app.use(express.json()); //turn request data to json format
 
 // - API roots 
 app.get('/', (req, res) => res.status(200).send('hello world'));
-app.post('/tester/create', async (req, res) => {
+app.post('/tester/create', (req, res) => {
     const info = req.data;
     res.status(201).send(info);
 });
