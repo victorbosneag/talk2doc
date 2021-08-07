@@ -12,8 +12,8 @@ $(document).ready(function() {
                     password: password
                 }
             }).then(res => {
-                localStorage.setItem('username', res.username); //set current user
-                window.location.replace('index.html');
+                localStorage.setItem('user', res.user); //set current user
+                localStorage.getItem('user').isDoctor === true ? window.location.replace('doctor.html') : window.location.replace('patient.html')
             })
         }
     })

@@ -9,10 +9,9 @@ $(document).ready(function() {
         const sendInfo = async () => {
             const promise = await createAxios({
                 method: 'post',
-                url: '/tester/create',
+                url: '/checkin',
                 data: {
-                    firstName: 'fred',
-                    lastName: 'li'
+                    Symptoms: '',
                 }
             });
             //console.log(promise);

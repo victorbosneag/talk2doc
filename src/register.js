@@ -21,6 +21,7 @@ $(document).ready(function() {
             })
         }
         sendLoginInfo();
+        window.location.replace('login.html');
     })
     //localStorage.setItem('username', 'hello?');
 })
