@@ -4,12 +4,16 @@
 
 $(document).ready(function() {
     $('#submit-checkIn-btn').on('click', function(e) {
-        console.log('submit clicked');
+        //console.log('submit clicked');
         
         const sendInfo = async () => {
             const promise = await createAxios({
                 method: 'post',
-                url: '/tester/create?info=60000'
+                url: '/tester/create',
+                data: {
+                    firstName: 'fred',
+                    lastName: 'li'
+                }
             });
             //console.log(promise);
         }

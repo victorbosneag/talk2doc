@@ -1,4 +1,4 @@
-//const functions = require("firebase-functions");
+const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors"); //security;
 
@@ -12,9 +12,9 @@ app.use(express.json()); //turn request data to json format
 // - API roots 
 app.get('/', (req, res) => res.status(200).send('hello world'));
 app.post('/tester/create', async (req, res) => {
-    const info = req.query.info;
+    const info = req.data;
     res.status(201).send(info);
 });
 
 // - listen command (cloud function)
-//exports.api = functions.https.onRequest(app);
+exports.api = functions.https.onRequest(app);
