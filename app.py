@@ -73,11 +73,12 @@ def register():
     
     
     doctor_bool = bool(int(input_data['isdoctor']))
-    new_user = User(username=input_data["username"], password=input_data["password"], email=input_data['email'], first_name=input_data['first_name'], last_name=input_data['last_name'], isdoctor=doctor_bool)
+    enc_password = gen_hash(input_data['password'])
+    new_user = User(username=input_data["username"], password=enc_password, email=input_data['email'], first_name=input_data['first_name'], last_name=input_data['last_name'], isdoctor=doctor_bool)
     db.session.add(new_user)
     db.session.commit()
     if doctor_bool:
-        new_doc = Doctor(username=input_data['username'],email=input_data['email'],rating=1, first_name=input_data['first_name'],last_name=input_data['last_name'])
+        new_doc = Doctor(username=input_data['username'],email=input_data['email'],rating=0, first_name=input_data['first_name'],last_name=input_data['last_name'])
         db.session.add(new_doc)
         db.session.commit()
     resp = {"username" : input_data['username'], "isdoctor" : doctor_bool}
@@ -88,7 +89,7 @@ def login():
     input_data = request.get_json()
     result = User.query.filter_by(username=input_data['username']).first()
     if result:
-        if result.password == input_data['password']:
+        if check_hash(result.password, input_data['password']):
             user_dict = {"username":result.username, "email":result.email, "first_name":result.first_name, "last_name":result.last_name, "isdoctor":result.isdoctor}
             user_info = json.dumps(user_dict)
             return Response(user_info, status=200, mimetype="application/json")
