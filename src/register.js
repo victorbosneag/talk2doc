@@ -15,7 +15,7 @@ $(document).ready(function() {
                 'email': email,
                 'first_name': first_name,
                 'last_name': last_name,
-                'isdoctor': isDoctor == 'true' ? true : false,
+                'isdoctor': isDoctor === 'true' ? 1 : 0,
             }
         }).then(res => {
             window.location.replace('login.html');
