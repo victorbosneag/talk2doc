@@ -3,7 +3,10 @@ $(document).ready(function() {
         const viewDocs = async () => {
             const res = await createAxios({
                 method: 'post',
-                url: 'view_docs'
+                url: 'view_doc',
+                data: {
+                    'username': localStorage.getItem('user')['username'],
+                }
             })
             const docs = JSON.parse(res)
             docs.map(doc => {
@@ -43,5 +46,6 @@ $(document).ready(function() {
                 section.appendChild(card)
             })
         }
+        viewDocs();
     }
 })

@@ -4,13 +4,38 @@
 
 $(document).ready(function() {
     $('#submit-checkIn-btn').on('click', function(e) {
+        //var symptoms = ["Fever/chills", "Cough", "Loss of taste/smell", "Shortness of breath", "Fatigue", "Muscle/body aches", "Headaches", "Sore throat", "Congestion/runny nose", "Nausea", "Diarrhea"]
+        //var severities = []
+        const symptoms = {
+            "Fever": 0, 
+            "Cough": 0, 
+            "Taste": 0, 
+            "Breath": 0, 
+            "Fatigue": 0, 
+            "Ache": 0, 
+            "Headache": 0, 
+            "Throat": 0, 
+            "Nose": 0, 
+            "Nausea": 0, 
+            "Diarrhea": 0
+        }
+        /*
+        for(var i = 0; i < symptoms.length; i++){
+            severities.push(0);
+        } */
+        $("input.severity").each(function(i, obj) {
+            if($(this).val() != ""){
+                symptoms[$(this).attr('id')] = parseInt($(this).val());
+            }
+        });
         //console.log('submit clicked');
         const sendInfo = async () => {
-            const promise = await createAxios({
+            const response = await createAxios({
                 method: 'post',
-                url: '/checkin',
+                url: '/symptom_log',
                 data: {
-                    'Symptoms': '',
+                    'username': localStorage.getItem('user')['username'],
+                    'Symptoms': symptoms,
                 }
             });
         }
@@ -21,9 +46,9 @@ $(document).ready(function() {
         const getDocNotes = async () => {
             const res = await createAxios({
                 method: 'post',
-                url: 'doc-notes',
+                url: 'view_notes',
                 data: {
-                    'username': localStorage.getItem('user').username
+                    'username': localStorage.getItem('user')['username'],
                 }
             })
             const notes = JSON.parse(res);

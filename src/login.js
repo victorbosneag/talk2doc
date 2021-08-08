@@ -5,14 +5,14 @@ $(document).ready(function() {
         const password = $('#password');
         createAxios({
             method: 'post',
-            url: '/loginUser',
+            url: '/login',
             data: {
                 'username': username,
                 'password': password
             }
         }).then(res => {
-            localStorage.setItem('user', res.user); //set current user
-            localStorage.getItem('user').isdoctor === true ? window.location.replace('doctor.html') : window.location.replace('patient.html')
+            localStorage.setItem('user', res); //set current user
+            localStorage.getItem('user')['isdoctor'] === true ? window.location.replace('doctor.html') : window.location.replace('patient.html')
         })
     })
     //console.log(localStorage.getItem('username'));

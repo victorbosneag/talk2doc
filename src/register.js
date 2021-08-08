@@ -8,7 +8,7 @@ $(document).ready(function() {
         const isDoctor = $('input[type="radio"][name=doctorRadio]:checked').val();
         createAxios({
             method: 'post',
-            url: '/registerUser',
+            url: '/register',
             data: { 
                 'username': username,
                 'password': password,

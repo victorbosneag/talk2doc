@@ -12,10 +12,11 @@ $(document).ready(function() {
         const sendInfo = async () => {
             const response = await createAxios({
                 method: 'post',
-                url: '/doctorNote',
+                url: '/add_notes',
                 data: {
-                    'username': patientName,
-                    'notes': document.getElementById('doctorNotes').value,
+                    'username': localStorage.getItem('user')['username'],
+                    'username_patient': patientName,
+                    'note': document.getElementById('doctorNotes').value,
                 }
             });
         }
@@ -25,9 +26,9 @@ $(document).ready(function() {
         const getConsultations = async () => {
             const res = await createAxios({
                 method: 'post',
-                url: 'doc-notes',
+                url: 'view_symptoms',
                 data: {
-                    'username': localStorage.getItem('user').username
+                    'username': localStorage.getItem('user')['username'],
                 }
             })
             const notes = JSON.parse(res);
@@ -55,9 +56,9 @@ $(document).ready(function() {
         const getPatients = async () => {
             const res = await createAxios({
                 method: 'post',
-                url: 'patients',
+                url: 'view_patients', //view_patient?
                 data: {
-                    'username': localStorage.getItem('user').username
+                    'username': localStorage.getItem('user')['username'],
                 }
             })
             const patients = JSON.parse(res)
@@ -66,7 +67,7 @@ $(document).ready(function() {
                 const div1 = document.createElement('div');
                 div1.className = 'note';
                 const h4 = document.createElement('h4')
-                h4.appendChild(document.createTextNode(patient.name))
+                h4.appendChild(document.createTextNode(patient['first_name'] + ' ' + patient['last_name']))
                 div1.appendChild(h4)
                 section.appendChild(div1)
                 section.appendChild(document.createElement('hr'))
