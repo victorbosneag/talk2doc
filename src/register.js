@@ -19,6 +19,8 @@ $(document).ready(function() {
             }
         }).then(res => {
             window.location.replace('login.html');
+        }).catch(res => {
+            alert(res)
         });
         
     })
