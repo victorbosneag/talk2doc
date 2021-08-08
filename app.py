@@ -131,7 +131,7 @@ def choose_doc():
     person.doctor = doctor
     db.session.commit()
     return Response("ok", status=200, mimetype="text/plain")
-
+#Useless comment
 @app.route('/symptom_log', methods=['POST'])
 def sym_log():
     input_data = request.get_json()
