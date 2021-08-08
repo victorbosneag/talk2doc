@@ -26,7 +26,7 @@ $(document).ready(function() {
         const getConsultations = async () => {
             const res = await createAxios({
                 method: 'post',
-                url: 'view_symptoms',
+                url: 'view_patients',
                 data: {
                     'username': localStorage.getItem('user')['username'],
                 }
@@ -43,8 +43,8 @@ $(document).ready(function() {
                 const p = document.createElement('p');
                 const div = document.createElement('div');
                 div.className = 'small text-gray-500';
-                h4.appendChild(document.createTextNode('Insert Patient Name'))
-                p.appendChild(document.createTextNode('Insert Patient Details'))
+                h4.appendChild(document.createTextNode(notes.username))
+                p.appendChild(document.createTextNode(n))
                 div.appendChild(document.createTextNode('Janurary 15, 2019'))
                 a.appendChild(h4)
                 a.appendChild(p)
