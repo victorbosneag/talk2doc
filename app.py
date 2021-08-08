@@ -135,11 +135,12 @@ def choose_doc():
 def sym_log():
     input_data = request.get_json()
     symptoms = input_data["symptoms"]
-    for symptom in symptoms:
-        sym_name = list(symptom.keys())[0]
-        severity = list(symptom.values())[0]
-        if severity > 0:
-            new_symptom = Symptom_log(username=input_data["username"], date_of_rec=date.today(), sym_name=sym_name, severity=severity)
+
+    sym_name = list(symptoms.keys())
+    severity = list(symptoms.values())
+    for i in range(len(sym_name)):
+        if severity[i] > 0:
+            new_symptom = Symptom_log(username=input_data["username"], date_of_rec=date.today(), sym_name=sym_name[i], severity=severity[i])
             db.session.add(new_symptom)
     db.session.commit()
     return Response("ok", status=200)
