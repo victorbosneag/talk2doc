@@ -39,7 +39,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fa fas fa-laugh-wink"></i>
         </div>
@@ -51,7 +51,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">
+        <a class="nav-link" href="index.html">
           <i class="fa fas fa-fw fa-tachometer-alt"></i>
           <span>Patient Dashboard</span></a>
       </li>
@@ -65,17 +65,12 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="ratings.html">
           <i class="fa fas fa-fw fa-search"></i>
           <span>Find a Doctor</span></a>
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
 
     </ul>
     <!-- End of Sidebar -->
@@ -93,18 +88,6 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-
-          <!-- Topbar Search -->
-          <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fa fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form> -->
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -128,56 +111,6 @@
                 </form>
               </div>
             </li>
-
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fa fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fa fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fa fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
-
             
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -202,7 +135,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login.php" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="login.html" data-toggle="modal" data-target="#logoutModal">
                   <i class="fa fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -223,7 +156,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Daily Check-in Form</h5>
-                  <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button> -->
+                  
                 </div>
                 <div class="modal-body">
                   <div id="dailyCheckInForm">
@@ -233,75 +166,75 @@
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="feverCheck">
                         <label class="custom-control-label" for="feverCheck">Fever or chills</label>
-                        <input type="number" id="feverSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Fever" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div>
                     <div class="mb-3">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="coughCheck">
                         <label class="custom-control-label" for="coughCheck">Cough</label>
-                        <input type="number" id="coughSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Cough" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div>
                     <div class="mb-3">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="tasteCheck">
                         <label class="custom-control-label" for="tasteCheck">Loss of taste or smell</label>
-                        <input type="number" id="tasteSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Taste" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div>
                     <div class="mb-3">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="breathCheck">
                         <label class="custom-control-label" for="breathCheck">Shortness of Breath</label>
-                        <input type="number" id="breathSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Breath" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div>
                     <div class="mb-3">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="fatigueCheck">
                         <label class="custom-control-label" for="fatigueCheck">Fatigue</label>
-                        <input type="number" id="fatigueSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Fatigue" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div>
                     <div class="mb-3">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="acheCheck">
                         <label class="custom-control-label" for="acheCheck">Muscle or body Aches</label>
-                        <input type="number" id="acheSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Ache" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div>
                     <div class="mb-3">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="headacheCheck">
                         <label class="custom-control-label" for="headacheCheck">Headache</label>
-                        <input type="number" id="headacheSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Headache" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div>
                     <div class="mb-3">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="throatCheck">
                         <label class="custom-control-label" for="throatCheck">Sore throat</label>
-                        <input type="number" id="throatSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Throat" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div>
                     <div class="mb-3">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="noseCheck">
                         <label class="custom-control-label" for="noseCheck">Congestion or Runny Nose</label>
-                        <input type="number" id="noseSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Nose" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div><div class="mb-3">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="nauseaCheck">
                         <label class="custom-control-label" for="nauseaCheck">Nausea or Vomiting</label>
-                        <input type="number" id="nauseaSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Nausea" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div><div class="mb-3">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="diarrheaCheck">
                         <label class="custom-control-label" for="diarrheaCheck">Diarrhea</label>
-                        <input type="number" id="diarrheaSeverity" class="form-control" placeholder="1-10" min="1" max="10">
+                        <input type="number" id="Diarrhea" class="severity form-control" placeholder="1-10" min="1" max="10">
                       </div>
                     </div>
                     <div class="mb-3">
@@ -335,7 +268,7 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Treatment Plan</h6>
                 </div>
-                <div class="card-body">
+                <div class="card-body" id="meds-section">
                   
                 </div>
               </div>
@@ -348,32 +281,7 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Doctor's Notes</h6>
                 </div>
-                <div class="card-body">
-                    <div class="note">
-                      <p>Sample doctor's note...</p>
-                      <div class="small text-gray-500">December 2, 2019</div>
-                    </div>
-                    <hr>
-                    <div class="note">
-                      <p>Sample doctor's note...</p>
-                      <div class="small text-gray-500">December 2, 2019</div>
-                    </div>
-                    <hr>
-                    <div class="note">
-                      <p>Sample doctor's note...</p>
-                      <div class="small text-gray-500">December 2, 2019</div>
-                    </div>
-                    <hr>
-                    <div class="note">
-                      <p>Sample doctor's note...</p>
-                      <div class="small text-gray-500">December 2, 2019</div>
-                    </div>
-                    <hr>
-                    <div class="note">
-                      <p>Sample doctor's note...</p>
-                      <div class="small text-gray-500">December 2, 2019</div>
-                    </div>
-                    <hr>
+                <div class="card-body" id="note-section">
                     <div class="note">
                       <p>Sample doctor's note...</p>
                       <div class="small text-gray-500">December 2, 2019</div>
@@ -426,7 +334,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a href="login.php" class="post" id="logout">
+            <a href="login.html" class="post" id="logout">
               <button class="btn btn-primary" name="logout" type="submit">Logout</button>
             </a>
         </div>

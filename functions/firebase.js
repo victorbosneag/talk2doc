@@ -1,15 +1,22 @@
 const firebase = require('firebase');
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB5Rlps1lTRGGvpSqbxWgV3oJkRaJgyYBA",
-    authDomain: "talk2doc-51f16.firebaseapp.com",
-    projectId: "talk2doc-51f16",
-    storageBucket: "talk2doc-51f16.appspot.com",
-    messagingSenderId: "33482042994",
-    appId: "1:33482042994:web:6f91b15623135b4da85ceb",
-    measurementId: "G-VGRV2GCSGM"
-};
 
+    apiKey: "AIzaSyDKehxzlrBUZsU9cB-f75ty1GwjboGu8Zc",
+  
+    authDomain: "talk2doc-e5da0.firebaseapp.com",
+  
+    projectId: "talk2doc-e5da0",
+  
+    storageBucket: "talk2doc-e5da0.appspot.com",
+  
+    messagingSenderId: "596877997417",
+  
+    appId: "1:596877997417:web:926e20e96a54f6b36439f8",
+  
+    measurementId: "G-G1YR6WYCDX"
+  
+  };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const db = firebaseApp.firestore(); //database 

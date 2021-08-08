@@ -15,7 +15,12 @@
   "main": "index.js",
   "dependencies": {
     "firebase-admin": "^9.8.0",
+<<<<<<< HEAD
     "firebase-functions": "^3.14.1"
+=======
+    "firebase-functions": "^3.14.1",
+    "sqlite3": "^4.2.0"
+>>>>>>> dee5a2f7c1a83ffe1cea070defc2a8c090485e1e
   },
   "devDependencies": {
     "eslint": "^7.6.0",
