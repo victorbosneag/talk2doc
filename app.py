@@ -221,7 +221,7 @@ def view_meds():
     result = Medication.query.filter_by(pt_username=input_data['username']).all()
     med_list = []
     for med in result:
-        med_list.append(med.note)
+        med_list.append([med.note, med.date_of_rec.strftime("%m/%d/%Y")])
     med_dict = {"meds":med_list}
     med_info = json.dumps(med_dict)
     return Response(med_info,status=200,mimetype="application/json")
