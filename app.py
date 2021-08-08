@@ -118,6 +118,13 @@ def view_patient():
         pt_list = []
         for pt in result:
             pt_dict = {"username":pt.username, "email":pt.email, "first_name":pt.first_name, "last_name":pt.last_name}
+            symptoms = Symptom_log.query.filter_by(username=pt.username).all()
+            symptom_list=[]
+            for symptom in symptoms:
+                date_of_rec_str = symptom.date_of_rec.strftime("%m/%d/%Y")
+                sympt_dict = {symptom.sym_name:[symptom.severity, date_of_rec_str]}
+                symptom_list.append(sympt_dict)
+            pt_dict['symptoms']=symptom_list
             pt_list.append(pt_dict)
         doc_info = json.dumps(pt_list)
         return Response(doc_info,status=200,mimetype="application/json")
