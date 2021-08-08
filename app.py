@@ -126,7 +126,8 @@ def view_patient():
                 symptom_list.append(sympt_dict)
             pt_dict['symptoms']=symptom_list
             pt_list.append(pt_dict)
-        doc_info = json.dumps(pt_list)
+        doc_info = {'patients':pt_list}
+        doc_info = json.dumps(doc_info)
         return Response(doc_info,status=200,mimetype="application/json")
     else:
         abort(403)
