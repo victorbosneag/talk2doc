@@ -32,7 +32,7 @@ $(document).ready(function() {
                 }
             })
             const notes = res.data
-            notes.symptoms.map(note => {
+            notes.patients.map(note => {
                 const section = document.getElementById('consultation-section');
                 const a = document.createElement('a')
                 a.setAttribute('class', note)
@@ -43,8 +43,10 @@ $(document).ready(function() {
                 const p = document.createElement('p');
                 const div = document.createElement('div');
                 div.className = 'small text-gray-500';
-                h4.appendChild(document.createTextNode(notes.username))
-                p.appendChild(document.createTextNode(n))
+                h4.appendChild(document.createTextNode(note.username))
+                p.appendChild(document.createTextNode(note.map(symptom => {
+                    console.log(symptom)
+                })))
                 div.appendChild(document.createTextNode('Janurary 15, 2019'))
                 a.appendChild(h4)
                 a.appendChild(p)
@@ -61,13 +63,13 @@ $(document).ready(function() {
                     'username': localStorage.getItem('user')['username'],
                 }
             })
-            const patients = JSON.parse(res)
-            patients.map(patient => {
+            const patients = res.data
+            patients.patients.map(patient => {
                 const section = document.getElementById('patient-section')
                 const div1 = document.createElement('div');
                 div1.className = 'note';
                 const h4 = document.createElement('h4')
-                h4.appendChild(document.createTextNode(patient['first_name'] + ' ' + patient['last_name']))
+                h4.appendChild(document.createTextNode(patient.first_name + ' ' + patient.last_name))
                 div1.appendChild(h4)
                 section.appendChild(div1)
                 section.appendChild(document.createElement('hr'))

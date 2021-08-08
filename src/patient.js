@@ -52,16 +52,16 @@ $(document).ready(function() {
                     'username': localStorage.getItem('user')['username'],
                 }
             })
-            const notes = JSON.parse(res);
-            notes.map(note => {
+            const notes = res.data
+            notes.notes.map(note => {
                 const noteSection = document.getElementById('note-section');
                 const div1 = document.createElement('div');
                 div1.className = 'note';
                 const div2 = document.createElement('div');
                 div2.className = 'small text-gray-500';
                 const p = document.createElement('p');
-                const node = document.createTextNode(note.info); //to be implemented
-                const node2 = document.createTextNode(note.date);
+                const node = document.createTextNode(note[0]);
+                const node2 = document.createTextNode(note[1]);
                 p.appendChild(node);
                 div1.appendChild(p);
                 div2.appendChild(node2);
