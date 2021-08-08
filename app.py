@@ -8,7 +8,7 @@ from werkzeug.security import check_password_hash as check_hash
 import sqlite3
 from flask_sqlalchemy import *
 from datetime import datetime, timedelta, date
-
+from flask_cors import CORS
 import  json
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super secret'
@@ -17,6 +17,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+cors = CORS(app)
 db = SQLAlchemy(app)
 
 
@@ -107,7 +108,7 @@ def view_doc():
     doc_info = json.dumps(doc_list)
     return Response(doc_info, status=200, mimetype="application/json")
 
-@app.route('/view_patient', methods=['POST'])
+@app.route('/view_patients', methods=['POST'])
 def view_patient():
     input_data = request.get_json()
     isdoctor = User.query.filter_by(username=input_data['username']).first().isdoctor
@@ -130,19 +131,29 @@ def choose_doc():
     person.doctor = doctor
     db.session.commit()
     return Response("ok", status=200, mimetype="text/plain")
-
+#Useless comment
 @app.route('/symptom_log', methods=['POST'])
 def sym_log():
     input_data = request.get_json()
     symptoms = input_data["symptoms"]
-    for symptom in symptoms:
-        sym_name = list(symptom.keys())[0]
-        severity = list(symptom.values())[0]
-        if severity > 0:
-            new_symptom = Symptom_log(username=input_data["username"], date_of_rec=date.today(), sym_name=sym_name, severity=severity)
+    result = User.query.filter_by(username=input_data['username']).first()
+    sym_name = list(symptoms.keys())
+    severity = list(symptoms.values())
+    for i in range(len(sym_name)):
+        if severity[i] > 0:
+            new_symptom = Symptom_log(username=input_data["username"], date_of_rec=date.today(), sym_name=sym_name[i], severity=severity[i])
             db.session.add(new_symptom)
     db.session.commit()
-    return Response("ok", status=200)
+    user_dict = {"username":result.username, "email":result.email, "first_name":result.first_name, "last_name":result.last_name, "isdoctor":result.isdoctor}
+    symptoms = Symptom_log.query.filter_by(username=input_data['username']).all()
+    symptom_list=[]
+    for symptom in symptoms:
+        date_of_rec_str = symptom.date_of_rec.strftime("%m/%d/%Y")
+        sympt_dict = {symptom.sym_name:symptom.severity}
+        symptom_list.append(sympt_dict)
+    user_dict['symptoms'] = symptom_list
+    user_info = json.dumps(user_dict)
+    return Response(user_info,status=200,mimetype="application/json")
 @app.route('/view_symptoms', methods=['POST'])
 def view_sym():
     input_data = request.get_json()
@@ -152,7 +163,7 @@ def view_sym():
         symptom_list=[]
         for symptom in symptoms:
             date_of_rec_str = symptom.date_of_rec.strftime("%m/%d/%Y")
-            sympt_dict = {symptom.sym_name:[symptom.severity, date_of_rec_str]}
+            sympt_dict = {symptom.sym_name:symptom.severity}
             symptom_list.append(sympt_dict)
         sym_info = json.dumps(symptom_list)
         return Response(sym_info,status=200,mimetype="application/json")
