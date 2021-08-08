@@ -220,7 +220,7 @@
             <div class="modal-dialog modal-xl">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Daily Check-in for *Patient Name*</h5>
+                  <h5 class="modal-title" id="doctor-dailyForm">Daily Check-in for </h5>
                   <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button> -->
                 </div>
                 <div class="modal-body">
@@ -234,6 +234,29 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-primary" data-dismiss="modal" id="submit-doctorNotes-btn">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="myModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="doctor-medsForm"></h5>
+                  <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button> -->
+                </div>
+                <div class="modal-body">
+                  <div id="doctorMedsForm">
+                    <div class="mb-3">
+                      <label for="doctorNotes" class="form-label">Treatments for this patient:</label>
+                      <textarea class="form-control" id="doctorMeds" cols="24" rows="5" ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" id="submit-doctorMeds-btn">Submit</button>
                 </div>
               </div>
             </div>

@@ -1,17 +1,43 @@
 $(document).ready(function() {
-    if (localStorage.getItem('user')) {
-        const res = createAxios({
+    function hasClass(elem, className) {
+        return elem.classList.contains(className);
+    }
+
+    var docToAdd = null
+    document.addEventListener('click', function (e) {
+        if (hasClass(e.target, 'doctor-btn')) {
+            docToAdd = e.target.value
+            createAxios({
+                method: 'post',
+                url: 'choose_doc',
+                data: {
+                    'username': localStorage.getItem('username'),
+                    'doc_username': docToAdd
+                }
+            }).then(res => {
+                
+                document.location.replace('/src/patient.html')
+            })
+        }
+    }, false);
+
+    if (localStorage.getItem('username')) {
+        createAxios({
             method: 'post',
             url: 'view_doc',
             data: {
-                'username': localStorage.getItem('user')['username'],
+                'username': localStorage.getItem('username'),
             }
         }).then(res => {
             const docs = res.data
-            docs.map(doc => {
+            docs.doctors.map(doc => {
                 const section = document.getElementById('docs-section')
                 const card = document.createElement('div')
-                card.setAttribute('class', 'card shadow mb-4')
+                const btn = document.createElement('button')
+                btn.appendChild(document.createTextNode('Choose doctor'))
+                btn.className = 'doctor-btn'
+                btn.setAttribute('value', doc.username)
+                card.setAttribute('class', 'card shadow mb-4 doctor-card')
                 const cardHeader = document.createElement('div')
                 cardHeader.setAttribute('class', 'card-header py-3')
                 const row = document.createElement('div')
@@ -33,6 +59,7 @@ $(document).ready(function() {
                 h6.appendChild(document.createTextNode(doc.first_name + ' ' + doc.last_name))
                 row.appendChild(img)
                 row.appendChild(h6)
+                row.appendChild(btn)
                 cardHeader.appendChild(row)
                 body.appendChild(p)
                 body.appendChild(ratings)
@@ -43,5 +70,6 @@ $(document).ready(function() {
                 section.appendChild(card)
             })
         })
+        
     }
 })
