@@ -1,14 +1,13 @@
 $(document).ready(function() {
-    if (user) {
-        const viewDocs = async () => {
-            const res = await createAxios({
-                method: 'post',
-                url: 'view_doc',
-                data: {
-                    'username': localStorage.getItem('user')['username'],
-                }
-            })
-            const docs = JSON.parse(res)
+    if (localStorage.getItem('user')) {
+        const res = createAxios({
+            method: 'post',
+            url: 'view_doc',
+            data: {
+                'username': localStorage.getItem('user')['username'],
+            }
+        }).then(res => {
+            const docs = res.data
             docs.map(doc => {
                 const section = document.getElementById('docs-section')
                 const card = document.createElement('div')
@@ -30,10 +29,8 @@ $(document).ready(function() {
                 like.className = 'fa fas fa-fw fa-thumbs-up likes'
                 const dislike = document.createElement('i')
                 dislike.className = 'fa fas fa-fw fa-thumbs-down dislikes activeIcon' 
-                like.appendChild(document.createTextNode(doc.likes))
-                dislike.appendChild(document.createTextNode(doc.dislikes))
-                p.appendChild(document.createTextNode(doc.desc))
-                h6.appendChild(document.createTextNode(doc.name))
+                like.appendChild(document.createTextNode(doc.rating))
+                h6.appendChild(document.createTextNode(doc.first_name + ' ' + doc.last_name))
                 row.appendChild(img)
                 row.appendChild(h6)
                 cardHeader.appendChild(row)
@@ -45,7 +42,6 @@ $(document).ready(function() {
                 card.appendChild(body)
                 section.appendChild(card)
             })
-        }
-        viewDocs();
+        })
     }
 })
