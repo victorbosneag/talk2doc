@@ -1,10 +1,10 @@
 $(document).ready(function() {
     $('#register-btn').on('click', function(e) {
-        const username = $('#username');
-        const password = $('#password');
-        const email = $('#email');
-        const first_name = $('#firstName');
-        const last_name = $('#lastName');
+        const username = $('#username').val();
+        const password = $('#password').val();
+        const email = $('#email').val();
+        const first_name = $('#firstName').val();
+        const last_name = $('#lastName').val();
         const isDoctor = $('input[type="radio"][name=doctorRadio]:checked').val();
         createAxios({
             method: 'post',

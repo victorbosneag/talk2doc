@@ -3,6 +3,7 @@
 //const otherInfo = document.getElementById('otherInfo');
 
 $(document).ready(function() {
+    console.log(localStorage.getItem('user'))
     $('#submit-checkIn-btn').on('click', function(e) {
         //var symptoms = ["Fever/chills", "Cough", "Loss of taste/smell", "Shortness of breath", "Fatigue", "Muscle/body aches", "Headaches", "Sore throat", "Congestion/runny nose", "Nausea", "Diarrhea"]
         //var severities = []
