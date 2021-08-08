@@ -105,7 +105,8 @@ def view_doc():
     for doc in result:
         doc_dict = {"username":doc.username, "email":doc.email, "first_name":doc.first_name, "last_name":doc.last_name, "rating":doc.rating}
         doc_list.append(doc_dict)
-    doc_info = json.dumps(doc_list)
+    doc_info = {"doctors":doc_list}
+    doc_info = json.dumps(doc_info)
     return Response(doc_info, status=200, mimetype="application/json")
 
 @app.route('/view_patients', methods=['POST'])
