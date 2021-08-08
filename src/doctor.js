@@ -31,8 +31,8 @@ $(document).ready(function() {
                     'username': localStorage.getItem('user')['username'],
                 }
             })
-            const notes = JSON.parse(res);
-            notes.map(note => {
+            const notes = res.data
+            notes.symptoms.map(note => {
                 const section = document.getElementById('consultation-section');
                 const a = document.createElement('a')
                 a.setAttribute('class', note)
