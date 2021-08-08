@@ -22,22 +22,24 @@ $(document).ready(function() {
     }, false);
 
     document.addEventListener('click', function(e) {
-        
-        if (hasClass(e.target, 'like-btn')) {
+        //console.log(e.target)
+        if (hasClass(e.target, 'like-btn') || hasClass(e.target, 'likes')) {
+            //console.log('test')
+            //console.log(e.target.value)
             createAxios({
                 method: 'post',
                 url: 'rate',
                 data: {
-                    'username': e.target.value,
+                    'username': localStorage.getItem('username'),
                     'rating': 1
                 }
             })
-        } else if (hasClass(e.target, 'dislike-btn')) {
+        } else if (hasClass(e.target, 'dislike-btn') || hasClass(e.target, 'dislikes')) {
             createAxios({
                 method: 'post',
                 url: 'rate',
                 data: {
-                    'username': e.target.value,
+                    'username': localStorage.getItem('username'),
                     'rating': -1
                 }
             })
@@ -82,29 +84,21 @@ $(document).ready(function() {
                 const dislike = document.createElement('i')
                 dislike.className = 'fa fas fa-fw fa-thumbs-down dislikes activeIcon' 
                 const span = document.createElement('span')
-                const likeBtn = document.createElement('button')
-                likeBtn.style = 'margin-right: 12px'
-                likeBtn.className = 'like-btn'
-                likeBtn.value = doc.username
-                const dislikeBtn = document.createElement('button')
-                dislikeBtn.className = 'dislike-btn'
-                likeBtn.appendChild(like)
-                dislikeBtn.appendChild(dislike)
-                dislikeBtn.value = doc.username
+                const rating = document.createElement('div')
+                rating.className = 'rating-div'
+                rating.style = 'margin-top: -32px'
+                rating.style = 'margin-bottom: 8px'
+                rating.appendChild(document.createTextNode('Rating: ' + doc.rating + ' points'))
                 span.className = 'counter'
                 span.appendChild(document.createTextNode('12'))
                 h6.appendChild(document.createTextNode(doc.first_name + ' ' + doc.last_name))
-                //p.appendChild(document.createTextNode('insert desc here'))
                 row.appendChild(img)
                 row.appendChild(h6)
                 cardHeader.appendChild(row)
                 body.appendChild(p)
                 body.appendChild(ratings)
+                body.appendChild(rating)
                 body.appendChild(btn)
-                ratings.append(likeBtn)
-                ratings.append(dislikeBtn)
-                //ratings.appendChild(like)
-                //ratings.appendChild(dislike)
                 card.appendChild(cardHeader)
                 card.appendChild(body)
                 section.appendChild(card)
