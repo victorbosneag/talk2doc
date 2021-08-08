@@ -163,9 +163,10 @@ def view_sym():
         symptom_list=[]
         for symptom in symptoms:
             date_of_rec_str = symptom.date_of_rec.strftime("%m/%d/%Y")
-            sympt_dict = {symptom.sym_name:symptom.severity}
+            sympt_dict = {symptom.sym_name:[symptom.severity, date_of_rec_str]}
             symptom_list.append(sympt_dict)
-        sym_info = json.dumps(symptom_list)
+        sym_info = {'username':input_data['username'],'symptom':symptom_list}
+        sym_info = json.dumps(sym_info)
         return Response(sym_info,status=200,mimetype="application/json")
     else:
         abort(403)
