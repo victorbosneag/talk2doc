@@ -4,15 +4,15 @@ $(document).ready(function() {
         const username = $('#username');
         const password = $('#password');
         createAxios({
-            method: 'get',
+            method: 'post',
             url: '/loginUser',
             data: {
-                username: username,
-                password: password
+                'username': username,
+                'password': password
             }
         }).then(res => {
             localStorage.setItem('user', res.user); //set current user
-            localStorage.getItem('user').isDoctor === true ? window.location.replace('doctor.html') : window.location.replace('patient.html')
+            localStorage.getItem('user').isdoctor === true ? window.location.replace('doctor.html') : window.location.replace('patient.html')
         })
     })
     //console.log(localStorage.getItem('username'));

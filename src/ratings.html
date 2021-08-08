@@ -12,13 +12,18 @@
   <title>talk2doc</title>
 
   <!-- Custom fonts for this template-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="theme.css" rel="stylesheet">
   <link rel="stylesheet" href="ourstyles.css">
-
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"wrapper
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous">
+  </script>
+  <script src="patient.js"></script>
 </head>
 
 <body id="page-top">
@@ -32,7 +37,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fa fas fa-laugh-wink"></i>
         </div>
@@ -46,7 +51,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.php">
           <i class="fa fas fa-fw fa-tachometer-alt"></i>
-          <span>Patient Dashboard</span></a>
+          <span>Find a Doctor</span></a>
       </li>
 
       <!-- Divider -->
@@ -58,9 +63,9 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="patient.html">
           <i class="fa fas fa-fw fa-search"></i>
-          <span>Find a Doctor</span></a>
+          <span>Patient Dashboard</span></a>
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -88,7 +93,7 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
@@ -97,7 +102,7 @@
                 </button>
               </div>
             </div>
-          </form>
+          </form> -->
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -209,63 +214,43 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
+          
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-          </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Daily Check-in for *Patient Name*</h5>
-                  <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button> -->
-                </div>
-                <div class="modal-body">
-                  <div id="doctorForm">
-                    <div class="mb-3">
-                      <label for="doctorNotes" class="form-label">Notes for this patient:</label>
-                      <textarea class="form-control" id="doctorNotes" cols="24" rows="5" ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" id="submit-doctorNotes-btn">Submit</button>
-                </div>
-              </div>
-            </div>
+            <h1 class="h3 mb-0 text-gray-800">Find a Doctor</h1>
           </div>
 
           <!-- Content Row -->
           <div class="row justify-content-center">
 
             <!-- Content Column -->
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-10 mb-4" id="docs-section">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Patients</h6>
+                    <div class="row">
+                      <img class="img-profile rounded-circle doctorPictures" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                      <h6 class="m-0 font-weight-bold text-primary">Insert Doctor Name</h6>
+                    </div>
                 </div>
-                <div class="card-body" id="patient-section">
-                  
+                <div class="card-body">
+                    <p>Insert Description of Doctor here</p>
+                    <div class="small text-gray-500">
+                        <i class="fa fas fa-fw fa-thumbs-up likes" ></i>12
+                        <i class="fa fas fa-fw fa-thumbs-down dislikes"></i>12</div>
                 </div>
               </div>
-
-            </div>
-
-            <!-- Content Column 2 -->
-            <div class="col-lg-6 mb-4">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Pending Consultations</h6>
+                    <div class="row">
+                      <img class="img-profile rounded-circle doctorPictures" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                      <h6 class="m-0 font-weight-bold text-primary">Insert Doctor Name</h6>
+                    </div>
                 </div>
-                <div class="card-body" id="consultation-section">
-                    
+                <div class="card-body">
+                    <p>Insert Description of Doctor here</p>
+                    <div class="small text-gray-500"><i class="fa fas fa-fw fa-thumbs-up likes" ></i>12<i class="fa fas fa-fw fa-thumbs-down dislikes"></i>12</div>
                 </div>
               </div>
-
 
             </div>
           </div>
@@ -310,7 +295,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a href="login.php" class="post" id="logout">
+            <a href="login.html" class="post" id="logout">
               <button class="btn btn-primary" name="logout" type="submit">Logout</button>
             </a>
         </div>
@@ -326,8 +311,27 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="axios.js"></script>
   <script src="theme.js"></script>
-  <script src="doctor.js"></script>
+  <script src="ratings.js"></script>
   <script type="text/javascript">
+    $(".likes").click(function(){
+      if($(this).next().hasClass("activeIcon")){
+        $(this).next().toggleClass("activeIcon");
+        $(this).toggleClass("activeIcon");
+      }else{
+        $(this).toggleClass("activeIcon");
+      }
+      
+    });
+    $(".dislikes").click(function(){
+
+      if($(this).prev().hasClass("activeIcon")){
+        $(this).prev().toggleClass("activeIcon");
+        $(this).toggleClass("activeIcon");
+      }else{
+        $(this).toggleClass("activeIcon");
+      }
+      
+    });
   </script>
 
 </body>

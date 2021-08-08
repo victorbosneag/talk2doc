@@ -9,13 +9,13 @@ $(document).ready(function() {
         createAxios({
             method: 'post',
             url: '/registerUser',
-            data: {
-                username: username,
-                password: password,
-                email: email,
-                first_name: first_name,
-                last_name: last_name,
-                isDoctor: isDoctor == 'true' ? true : false,
+            data: { 
+                'username': username,
+                'password': password,
+                'email': email,
+                'first_name': first_name,
+                'last_name': last_name,
+                'isdoctor': isDoctor == 'true' ? true : false,
             }
         }).then(res => {
             window.location.replace('login.html');

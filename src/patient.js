@@ -10,7 +10,7 @@ $(document).ready(function() {
                 method: 'post',
                 url: '/checkin',
                 data: {
-                    Symptoms: '',
+                    'Symptoms': '',
                 }
             });
         }
@@ -20,10 +20,10 @@ $(document).ready(function() {
     if (localStorage.getItem('user')) {
         const getDocNotes = async () => {
             const res = await createAxios({
-                method: 'get',
+                method: 'post',
                 url: 'doc-notes',
                 data: {
-                    username: localStorage.getItem('user').username
+                    'username': localStorage.getItem('user').username
                 }
             })
             const notes = JSON.parse(res);

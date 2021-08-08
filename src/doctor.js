@@ -14,46 +14,64 @@ $(document).ready(function() {
                 method: 'post',
                 url: '/doctorNote',
                 data: {
-                    username: patientName,
-                    notes: document.getElementById('doctorNotes').value,
+                    'username': patientName,
+                    'notes': document.getElementById('doctorNotes').value,
                 }
             });
         }
         sendInfo();
     })
-    
     if (localStorage.getItem('user')) {
         const getConsultations = async () => {
             const res = await createAxios({
-                method: 'get',
+                method: 'post',
                 url: 'doc-notes',
                 data: {
-                    username: localStorage.getItem('user').username
+                    'username': localStorage.getItem('user').username
                 }
             })
             const notes = JSON.parse(res);
             notes.map(note => {
-                const noteSection = document.getElementById('note-section');
-                const div1 = document.createElement('div');
-                div1.className = 'note';
-                const div2 = document.createElement('div');
-                div2.className = 'small text-gray-500';
+                const section = document.getElementById('consultation-section');
+                const a = document.createElement('a')
+                a.setAttribute('class', note)
+                a.setAttribute('data-toggle', 'modal')
+                a.setAttribute('data-target', '#myModal')
+                a.setAttribute('id', 'test23')
+                const h4 = document.createElement('h4');
                 const p = document.createElement('p');
-                const node = document.createTextNode(note.info); //to be implemented
-                const node2 = document.createTextNode(note.date);
-                p.appendChild(node);
-                div1.appendChild(p);
-                div2.appendChild(node2);
-                div1.appendChild(div2);
-                noteSection.appendChild(div1);
-                noteSection.appendChild(document.createElement('hr'));
+                const div = document.createElement('div');
+                div.className = 'small text-gray-500';
+                h4.appendChild(document.createTextNode('Insert Patient Name'))
+                p.appendChild(document.createTextNode('Insert Patient Details'))
+                div.appendChild(document.createTextNode('Janurary 15, 2019'))
+                a.appendChild(h4)
+                a.appendChild(p)
+                a.appendChild(div)
+                section.appendChild(a)
             });
         }
 
         const getPatients = async () => {
-
+            const res = await createAxios({
+                method: 'post',
+                url: 'patients',
+                data: {
+                    'username': localStorage.getItem('user').username
+                }
+            })
+            const patients = JSON.parse(res)
+            patients.map(patient => {
+                const section = document.getElementById('patient-section')
+                const div1 = document.createElement('div');
+                div1.className = 'note';
+                const h4 = document.createElement('h4')
+                h4.appendChild(document.createTextNode(patient.name))
+                div1.appendChild(h4)
+                section.appendChild(div1)
+                section.appendChild(document.createElement('hr'))
+            })
         }
-
         getConsultations();
         getPatients();
     }
